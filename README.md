@@ -85,7 +85,7 @@ You can test the following routes after starting the server:
 * `POST /sell`
   Place a sell order.
 
-* `GET /exit`
+* `POST /exit`
   Exit current position.
 
 **Example `curl` request:**
