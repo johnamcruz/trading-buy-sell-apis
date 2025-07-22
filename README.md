@@ -100,5 +100,7 @@ curl -X POST http://localhost:3000/api/enter
 * No external database or persistent storage is used.
 * **Designed to receive alerts as JSON webhooks from TradingView and TrendSpider.**
 
+---
+
 ## Support This Project ❤️
-If you find this project useful, consider signing up for Alpha Futures using my [affiliate link](bit.ly/44zw8SI). It helps support future development!
+If you find this project useful, consider signing up for Alpha Futures using my [affiliate link](https://app.alpha-futures.com/signup/John004077/). It helps support future development!
