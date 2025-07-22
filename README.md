@@ -37,7 +37,6 @@ Make sure you have the following installed on your machine:
 4. **(Optional) Configure environment variables**
 
    If the project uses environment variables (noted via `process.env` in code), create a `.env` file in the root directory and set any required keys.
-   *Note: This specific project doesn't appear to use any environment variables as of now.*
 
 ---
 
@@ -71,8 +70,8 @@ To receive webhook requests from TradingView or TrendSpider, your local server m
 
 3. **Copy the HTTPS URL** displayed by ngrok (e.g., `https://abcd1234.ngrok.io`) and use it in your TradingView or TrendSpider webhook configuration:
 
-   * For buy alert: `https://abcd1234.ngrok.io/buy`
-   * For sell alert: `https://abcd1234.ngrok.io/sell`
+   * For buy alert: `https://abcd1234.ngrok.io/api/buy`
+   * For sell alert: `https://abcd1234.ngrok.io/api/sell`
 
 ---
 
@@ -86,8 +85,8 @@ You can test the following routes after starting the server:
 * `POST /sell`
   Place a sell order.
 
-* `GET /transactions`
-  Get a list of all buy/sell transactions.
+* `GET /exit`
+  Exit current position.
 
 **Example `curl` request:**
 
