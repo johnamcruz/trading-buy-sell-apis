@@ -36,7 +36,7 @@ exports.exit = async (req, res) => {
     };
     const result = await apiRequest('POST', '/Position/closeContract', body);
     console.log(result.data)
-    res.json({ message: 'Exit failed' });
+    res.json({ message: 'Exit successful' });
 
   } catch(error) {
     console.error("Buy error:", error.message);
