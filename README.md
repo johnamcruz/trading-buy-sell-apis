@@ -91,25 +91,7 @@ You can test the following routes after starting the server:
 **Example `curl` request:**
 
 ```bash
-curl -X POST http://localhost:3000/buy \
-     -H "Content-Type: application/json" \
-     -d '{"symbol": "AAPL", "quantity": 5}'
-```
-
----
-
-## 🛠 Project Structure Overview
-
-```
-trading-buy-sell-apis/
-├── routes/
-│   └── transactionRoutes.js       # API route handlers
-├── controllers/
-│   └── transactionController.js   # Logic for buy/sell actions
-├── models/
-│   └── transactionModel.js        # In-memory transaction data
-├── app.js                         # Express app setup
-└── package.json                   # Project metadata and dependencies
+curl -X POST http://localhost:3000/api/buy
 ```
 
 ---
