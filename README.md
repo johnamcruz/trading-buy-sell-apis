@@ -36,7 +36,7 @@ Make sure you have the following installed on your machine:
 
 4. **(Optional) Configure environment variables**
 
-   If the project uses environment variables (noted via `process.env` in code), create a `.env` file in the root directory and set any required keys.
+   The project uses environment variables, create a `.env` file in the root directory and set any required keys for the following: API_KEY, API_URL, and API_USER
 
 ---
 
@@ -45,7 +45,7 @@ Make sure you have the following installed on your machine:
 To start the server:
 
 ```bash
-npm start
+npm run dev
 ```
 
 By default, the server runs on **[http://localhost:3000](http://localhost:3000)**
