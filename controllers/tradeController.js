@@ -1,37 +1,22 @@
 const { apiRequest }  = require('../utils/apiClient');
 const { openPosition, SIDE } = require('../services/orderService');
 
-exports.buy = async (req, res) => {
-  try {
-    const accountId = req.query.accountId;
-    const contractId = req.query.contractId;
-    if (!accountId || !contractId) {
-      return res.status(400).json({ error: 'Missing or invalid query parameters' });
-    }
-
-    const size = parseInt(req.query.size, 10) || 1;
-    await openPosition(accountId, contractId, SIDE.BUY, size)
-    res.json({ message: 'Sell order placed.' });
-  } catch(error) {
-    console.error("Buy error:", error.message);
-    res.status(500).json({ error: 'Buy failed' });
-  }
-};
-
-exports.sell = async (req, res) => {
+exports.enter = async (req, res) => {
    try {
     const accountId = req.query.accountId;
     const contractId = req.query.contractId;
-    if (!accountId || !contractId) {
+    const side = parseInt(req.query.side, 10) || 0;
+    if (!accountId || !contractId || (side !== 0 && side !== 1)) {
       return res.status(400).json({ error: 'Missing or invalid query parameters' });
     }
 
+    const type = side == SIDE.BUY ? "Buy" : "Sell"
     const size = parseInt(req.query.size, 10) || 1;
-    await openPosition(accountId, contractId, SIDE.SELL, size)
-    res.json({ message: 'Sell order placed.' });
+    await openPosition(accountId, contractId, side, size)
+    res.json({ message: `${type} order placed.` });
   } catch(error) {
-    console.error("Sell error:", error.message);
-    res.status(500).json({ error: 'Sell failed' });
+    console.error(`${type} error:`, error.message);
+    res.status(500).json({ error: `${type} failed` });
   }
 };
 
@@ -51,7 +36,7 @@ exports.exit = async (req, res) => {
     };
     const result = await apiRequest('POST', '/Position/closeContract', body);
     console.log(result.data)
-    res.json({ message: 'Sell order placed.' });
+    res.json({ message: 'Exit failed' });
 
   } catch(error) {
     console.error("Buy error:", error.message);

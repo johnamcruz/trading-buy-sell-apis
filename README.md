@@ -1,6 +1,6 @@
 # 📦 Trading Buy/Sell APIs – Installation & Running Guide
 
-This project provides simple trading-related buy/sell API endpoints using Node.js and Express. It is designed to be wired up as **webhooks for TradingView and TrendSpider alerts**. Follow the steps below to install dependencies, configure the project, and run the server locally.
+This project provides simple trading-related buy/sell API endpoints for ProjectX APIs using Node.js and Express. It is designed to be wired up as **webhooks for TradingView and TrendSpider alerts**. Follow the steps below to install dependencies, configure the project, and run the server locally.
 
 ## ✅ Prerequisites
 
@@ -70,8 +70,8 @@ To receive webhook requests from TradingView or TrendSpider, your local server m
 
 3. **Copy the HTTPS URL** displayed by ngrok (e.g., `https://abcd1234.ngrok.io`) and use it in your TradingView or TrendSpider webhook configuration:
 
-   * For buy alert: `https://abcd1234.ngrok.io/api/buy`
-   * For sell alert: `https://abcd1234.ngrok.io/api/sell`
+   * For buy alert: `https://abcd1234.ngrok.io/api/enter?side=0`
+   * For sell alert: `https://abcd1234.ngrok.io/api/enter?side=1`
 
 ---
 
@@ -79,11 +79,8 @@ To receive webhook requests from TradingView or TrendSpider, your local server m
 
 You can test the following routes after starting the server:
 
-* `POST /buy`
-  Place a buy order.
-
-* `POST /sell`
-  Place a sell order.
+* `POST /enter`
+  Place a buy or sell order.
 
 * `POST /exit`
   Exit current position.
@@ -91,7 +88,7 @@ You can test the following routes after starting the server:
 **Example `curl` request:**
 
 ```bash
-curl -X POST http://localhost:3000/api/buy
+curl -X POST http://localhost:3000/api/enter
 ```
 
 ---
@@ -102,3 +99,6 @@ curl -X POST http://localhost:3000/api/buy
 * Great for learning or testing small trading logic flows.
 * No external database or persistent storage is used.
 * **Designed to receive alerts as JSON webhooks from TradingView and TrendSpider.**
+
+## Support This Project ❤️
+If you find this project useful, consider signing up for Alpha Futures using my [affiliate link](bit.ly/44zw8SI). It helps support future development!
