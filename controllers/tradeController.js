@@ -27,7 +27,7 @@ exports.sell = async (req, res) => {
     }
 
     const size = parseInt(req.query.size, 10) || 1;
-    await openPosition(raccountId, contractId, SIDE.SELL, size)
+    await openPosition(accountId, contractId, SIDE.SELL, size)
     res.json({ message: 'Sell order placed.' });
   } catch(error) {
     console.error("Sell error:", error.message);
