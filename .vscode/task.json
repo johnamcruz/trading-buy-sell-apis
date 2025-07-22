@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "call-endpoint",
+      "type": "shell",
+      "command": "sleep 2 && curl -X POST http://localhost:3000${input:endpoint}",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "endpoint",
+      "type": "promptString",
+      "description": "Enter API endpoint (e.g. /api/buy or /api/sell)",
+      "default": "/api/buy"
+    }
+  ]
+}
