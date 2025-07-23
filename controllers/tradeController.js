@@ -1,8 +1,8 @@
-const { apiRequest }  = require('../utils/apiClient');
+const { apiRequest } = require('../utils/apiClient');
 const { openPosition, SIDE } = require('../services/orderService');
 
 exports.enter = async (req, res) => {
-   try {
+  try {
     const accountId = req.query.accountId;
     const contractId = req.query.contractId;
     const side = parseInt(req.query.side, 10) || 0;
@@ -14,7 +14,7 @@ exports.enter = async (req, res) => {
     const size = parseInt(req.query.size, 10) || 1;
     await openPosition(accountId, contractId, side, size)
     res.json({ message: `${type} order placed.` });
-  } catch(error) {
+  } catch (error) {
     console.error(`${type} error:`, error.message);
     res.status(500).json({ error: `${type} failed` });
   }
@@ -31,14 +31,14 @@ exports.exit = async (req, res) => {
     const response = await apiRequest('POST', '/Position/searchOpen', { accountId: accountId });
 
     const body = {
-        "accountId": accountId,
-        "contractId": contractId
+      "accountId": accountId,
+      "contractId": contractId
     };
     const result = await apiRequest('POST', '/Position/closeContract', body);
     console.log(result.data)
     res.json({ message: 'Exit successful' });
 
-  } catch(error) {
+  } catch (error) {
     console.error("Buy error:", error.message);
     res.status(500).json({ error: 'Exit failed' });
   }
