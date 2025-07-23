@@ -5,7 +5,7 @@ const axios = require('axios');
 let accessToken = null;
 
 async function getAccessToken() {
-  if (accessToken) return accessToken;
+  if (accessToken && await validate()) return accessToken;
 
   const body = {
     userName: process.env.API_USER,
@@ -20,6 +20,11 @@ async function getAccessToken() {
 
   accessToken = response.data.token;
   return accessToken;
+}
+
+async function validate() {
+   const response = await apiRequest('POST', '/Auth/validate');
+   return response.status == 200
 }
 
 async function apiRequest(method, endpoint, data = null) {
