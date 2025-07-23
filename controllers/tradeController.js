@@ -29,13 +29,16 @@ exports.exit = async (req, res) => {
     }
 
     const response = await apiRequest('POST', '/Position/searchOpen', { accountId: accountId });
+    if (!response || !Array.isArray(response.data) || response.data.length === 0) {
+      return res.status(404).json({ error: 'No open position found' });
+    }
 
     const body = {
       "accountId": accountId,
       "contractId": contractId
     };
     const result = await apiRequest('POST', '/Position/closeContract', body);
-    console.log(result.data)
+    console.log(`[Exit] Closed position for ${contractId} on account ${accountId}`, result.data);
     res.json({ message: 'Exit successful' });
 
   } catch (error) {
