@@ -19,10 +19,13 @@ async function openPosition(accountId, contractId, side, size) {
             "side": side,
             "size": size
         }
-        console.log(order)
         const response = await apiRequest('POST', '/Order/place', order);
-        console.log(response.data)
-        return response
+        return {
+            accountId: accountId,
+            contractId: contractId,
+            orderId: response.data.orderId,
+            size: size
+        }
     } else {
         console.log("Position already exists. Skipping order.")
         return {}

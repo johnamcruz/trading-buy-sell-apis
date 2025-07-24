@@ -12,8 +12,9 @@ exports.enter = async (req, res) => {
 
     const type = side == SIDE.BUY ? "Buy" : "Sell"
     const size = parseInt(req.query.size, 10) || 1;
-    await openPosition(accountId, contractId, side, size)
-    res.json({ message: `${type} order placed.` });
+    const data = await openPosition(accountId, contractId, side, size)
+    console.log(`[Enter] ${data.size} ${type} order ${data.orderId} for ${data.contractId} placed.`)
+    res.json({ message: `${type} order ${data.orderId} for ${data.contractId} placed.` });
   } catch (error) {
     console.error(`${type} error:`, error.message);
     res.status(500).json({ error: `${type} failed` });
