@@ -21,7 +21,7 @@ app.use('/api', tradeRoutes);
       });
 
       console.log(`🚀 Ngrok tunnel established: ${url}/api`);
-      console.log(`✅ Ready to receive TradingView webhooks at: ${url}/api/enter or /api/exit`);
+      console.log(`✅ Ready to receive TradingView webhooks at:\n${url}/api/enter\n${url}/api/exit`);
     });
   } catch (err) {
     console.error('Failed to start Ngrok:', err);
