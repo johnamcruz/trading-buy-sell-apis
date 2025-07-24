@@ -16,27 +16,49 @@ Make sure you have the following installed on your machine:
 
 ## 🚀 Installation Steps
 
-1. **Clone the repository**
+### 🖥 macOS & Linux: Run `setup.sh`  
+### 🪟 Windows: Run `setup.ps1`
 
-   ```bash
-   git clone https://github.com/johnamcruz/trading-buy-sell-apis.git
-   ```
+---
 
-2. **Navigate to the project directory**
+### 1. Run the setup script
 
-   ```bash
-   cd trading-buy-sell-apis
-   ```
+Use the appropriate script for your system:
 
-3. **Install dependencies**
+#### macOS/Linux:
+```bash
+bash setup.sh
+```
 
-   ```bash
-   npm install
-   ```
+#### Windows (Run in PowerShell as Administrator):
+```powershell
+.\setup.ps1
+```
 
-4. **(Optional) Configure environment variables**
+This script will:
 
-   The project uses environment variables, create a `.env` file in the root directory and set any required keys for the following: API_KEY, API_URL, and API_USER
+- Check for and install required tools (Git, Node.js)
+- Clone the project repository
+- Install all dependencies via `npm install`
+- Set up a `.env` file if `.env.example` exists
+
+---
+
+### 2. Configure environment variables
+
+After the script completes, update the `.env` file located in the project root.
+
+If a `.env.example` file exists, it will be copied automatically.
+
+Set the required variables:
+
+```env
+API_KEY=your_api_key_here
+API_URL=https://your.api.url
+API_USER=your_api_user
+```
+
+> 💡 These values are required for the application to run properly.
 
 ---
 
