@@ -11,7 +11,6 @@ async function openPosition(accountId, contractId, side, size) {
     const isEmpty = !response.positions || response.positions.length === 0 || response.positions.every(pos => pos.size === 0);
 
     if (isEmpty) {
-        console.log("No active position. Placing order...")
         const order = {
             "accountId": accountId,
             "contractId": contractId,

@@ -63,13 +63,7 @@ API_USER=your_api_user
 
 ## ▶️ Run the Application
 
-To start the server:
-
-```bash
-npm run dev
-```
-
-To start the server with http Tunnel:
+To start the server with http tunnel:
 
 ```bash
 npm run tunnel
