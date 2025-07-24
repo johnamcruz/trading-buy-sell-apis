@@ -48,6 +48,12 @@ To start the server:
 npm run dev
 ```
 
+To start the server with Ngrok Tunnel:
+
+```bash
+npm run tunnel
+```
+
 By default, the server runs on **[http://localhost:3000](http://localhost:3000)**
 
 ---
