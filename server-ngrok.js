@@ -1,6 +1,8 @@
 const express = require('express');
 const ngrok = require('ngrok');
 const tradeRoutes = require('./routes/trade');
+const { printAccounts } = require('./services/accountService');
+
 require('dotenv').config();
 
 const app = express();
@@ -13,15 +15,16 @@ app.use('/api', tradeRoutes);
   try {
     // Start local server
     app.listen(port, async () => {
-      console.log(`Buy/Sell API running locally at http://localhost:${port}`);
+      console.log(`📦 Buy/Sell API running locally at: http://localhost:${port}\n`);
 
       // Connect Ngrok
       const url = await ngrok.connect({
         addr: port
       });
 
-      console.log(`🚀 Ngrok tunnel established: ${url}/api`);
-      console.log(`✅ Ready to receive TradingView webhooks at:\n${url}/api/enter\n${url}/api/exit`);
+      console.log(`🚀 Ngrok tunnel established: ${url}/api\n`);
+      console.log(`✅ Ready to receive TradingView webhooks at:\n •  ${url}/api/enter\n •  ${url}/api/exit\n`);
+      await printAccounts()
     });
   } catch (err) {
     console.error('Failed to start Ngrok:', err);
