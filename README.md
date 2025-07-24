@@ -10,7 +10,6 @@ Make sure you have the following installed on your machine:
   👉 Download from: [https://nodejs.org/](https://nodejs.org/)
 * **npm** (comes with Node.js)
 * (Optional but helpful) **Postman or cURL** to test API endpoints
-* (Optional but recommended) **[ngrok](https://ngrok.com/)** to expose your local server for webhook testing
 
 ---
 
@@ -70,7 +69,7 @@ To start the server:
 npm run dev
 ```
 
-To start the server with Ngrok Tunnel:
+To start the server with http Tunnel:
 
 ```bash
 npm run tunnel
@@ -79,8 +78,8 @@ npm run tunnel
 This command will:
 
 - Launch the Express server locally on port `3000`
-- Automatically establish a public ngrok tunnel to your local server
-- Display the public ngrok URL you can use to send TradingView webhooks
+- Automatically establish a public http tunnel to your local server
+- Display the public http URL you can use to send TradingView webhooks
 
 ---
 
