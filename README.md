@@ -48,8 +48,6 @@ To start the server:
 npm run dev
 ```
 
-By default, the server runs on **[http://localhost:3000](http://localhost:3000)**
-
 To start the server with Ngrok Tunnel:
 
 ```bash
@@ -61,29 +59,6 @@ This command will:
 - Launch the Express server locally on port `3000`
 - Automatically establish a public ngrok tunnel to your local server
 - Display the public ngrok URL you can use to send TradingView webhooks
-
----
-
-## 🌐 Expose Localhost with Ngrok (for Webhooks)
-
-To receive webhook requests from TradingView or TrendSpider, your local server must be accessible over the internet. Use **ngrok** to create a public HTTPS URL that tunnels to your localhost:
-
-1. **Install ngrok** (if not already installed):
-
-   ```bash
-   npm install -g ngrok
-   ```
-
-2. **Start ngrok**:
-
-   ```bash
-   ngrok http 3000
-   ```
-
-3. **Copy the HTTPS URL** displayed by ngrok (e.g., `https://abcd1234.ngrok.io`) and use it in your TradingView or TrendSpider webhook configuration:
-
-   * For buy alert: `https://abcd1234.ngrok.io/api/enter?side=0`
-   * For sell alert: `https://abcd1234.ngrok.io/api/enter?side=1`
 
 ---
 
