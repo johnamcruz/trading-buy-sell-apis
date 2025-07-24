@@ -28,11 +28,6 @@ exports.exit = async (req, res) => {
       return res.status(400).json({ error: 'Missing or invalid query parameters' });
     }
 
-    const response = await apiRequest('POST', '/Position/searchOpen', { accountId: accountId });
-    if (!response || !Array.isArray(response.data) || response.data.length === 0) {
-      return res.status(404).json({ error: 'No open position found' });
-    }
-
     const body = {
       "accountId": accountId,
       "contractId": contractId
