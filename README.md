@@ -48,13 +48,19 @@ To start the server:
 npm run dev
 ```
 
+By default, the server runs on **[http://localhost:3000](http://localhost:3000)**
+
 To start the server with Ngrok Tunnel:
 
 ```bash
 npm run tunnel
 ```
 
-By default, the server runs on **[http://localhost:3000](http://localhost:3000)**
+This command will:
+
+- Launch the Express server locally on port `3000`
+- Automatically establish a public ngrok tunnel to your local server
+- Display the public ngrok URL you can use to send TradingView webhooks
 
 ---
 
