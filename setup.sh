@@ -1,5 +1,32 @@
 #!/bin/bash
 
+# Check for Node.js and npm
+if ! command -v npm &> /dev/null || ! command -v node &> /dev/null; then
+  echo "Node.js and npm are not installed. Installing them..."
+
+  # Detect OS
+  OS="$(uname)"
+  if [[ "$OS" == "Darwin" ]]; then
+    # macOS
+    if ! command -v brew &> /dev/null; then
+      echo "Homebrew not found. Installing Homebrew..."
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+    brew install node
+  elif [[ "$OS" == "Linux" ]]; then
+    # Linux (Debian-based)
+    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+  else
+    echo "Unsupported OS. Please install Node.js and npm manually."
+    exit 1
+  fi
+
+  echo "Node.js and npm installed successfully."
+else
+  echo "Node.js and npm are already installed."
+fi
+
 # Clone the repo
 git clone https://github.com/johnamcruz/trading-buy-sell-apis.git
 
