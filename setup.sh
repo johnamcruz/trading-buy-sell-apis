@@ -77,3 +77,6 @@ echo
 echo "✅ Setup complete! You can now run:"
 echo "  npm run dev         # to start the server"
 echo "  npm run tunnel      # to start the server with Ngrok tunnel"
+
+# Navigate into the project directory
+cd trading-buy-sell-apis
