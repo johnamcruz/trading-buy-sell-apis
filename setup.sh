@@ -1,10 +1,23 @@
 #!/bin/bash
 
-# Check for Node.js and npm
-if ! command -v npm &> /dev/null || ! command -v node &> /dev/null; then
-  echo "Node.js and npm are not installed. Installing them..."
+set -e
 
-  # Detect OS
+echo "Checking for Node.js and npm..."
+
+# Function to add Homebrew to PATH if needed
+add_brew_to_path() {
+  # Default Homebrew paths depending on architecture
+  if [ -d "/opt/homebrew/bin" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [ -d "/usr/local/bin" ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+}
+
+# Check for Node.js and npm
+if ! command -v node &> /dev/null || ! command -v npm &> /dev/null; then
+  echo "Node.js and npm not found. Installing..."
+
   OS="$(uname)"
   if [[ "$OS" == "Darwin" ]]; then
     # macOS
@@ -12,9 +25,15 @@ if ! command -v npm &> /dev/null || ! command -v node &> /dev/null; then
       echo "Homebrew not found. Installing Homebrew..."
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
+
+    add_brew_to_path
+
+    echo "Installing Node.js via Homebrew..."
     brew install node
+
   elif [[ "$OS" == "Linux" ]]; then
     # Linux (Debian-based)
+    echo "Installing Node.js on Linux..."
     curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
     sudo apt-get install -y nodejs
   else
@@ -27,23 +46,34 @@ else
   echo "Node.js and npm are already installed."
 fi
 
+# Show installed versions
+echo "Node version: $(node -v)"
+echo "npm version: $(npm -v)"
+
 # Clone the repo
-git clone https://github.com/johnamcruz/trading-buy-sell-apis.git
+if [ ! -d "trading-buy-sell-apis" ]; then
+  echo "Cloning the repository..."
+  git clone https://github.com/johnamcruz/trading-buy-sell-apis.git
+else
+  echo "Repository already exists. Skipping clone."
+fi
 
 # Navigate into the project directory
 cd trading-buy-sell-apis || exit
 
 # Install dependencies
+echo "Installing dependencies..."
 npm install
 
-# (Optional) Copy example env file if exists
+# Copy .env.example if it exists
 if [ -f .env.example ]; then
-  cp .env.example .env
-  echo "Copied .env.example to .env — please update environment variables as needed."
+  cp -n .env.example .env
+  echo "Copied .env.example to .env — update environment variables as needed."
 else
-  echo "No .env.example file found, remember to create your .env file with necessary variables."
+  echo "No .env.example file found. Please create a .env file manually."
 fi
 
-echo "Setup complete! You can now run:"
+echo
+echo "✅ Setup complete! You can now run:"
 echo "  npm run dev         # to start the server"
 echo "  npm run tunnel      # to start the server with Ngrok tunnel"
