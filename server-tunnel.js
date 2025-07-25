@@ -23,8 +23,12 @@ app.use('/api', tradeRoutes);
       });
 
       console.log(`🚀 tunnel established: ${url}/api\n`);
-      console.log(`✅ Ready to receive TradingView webhooks at:\n •  ${url}/api/enter\n •  ${url}/api/exit\n`);
+      const buyUrl = `${url}/api/enter?side=0&accountId=${process.env.DEFAULT_ACCOUNTID}&contractId=${process.env.DEFAULT_CONTRACTID}&size=1 (Buy)\n`
+      const sellUrl = `${url}/api/enter?side=1&accountId=${process.env.DEFAULT_ACCOUNTID}&contractId=${process.env.DEFAULT_CONTRACTID}&size=1 (Sell)\n`
+      const exitUrl = `${url}/api/exit?accountId=${process.env.DEFAULT_ACCOUNTID}&contractId=${process.env.DEFAULT_CONTRACTID} (Exit)\n`
+      console.log(`✅ Ready to receive TradingView webhooks at:\n • ${buyUrl} • ${sellUrl} • ${exitUrl}`);
       await printAccounts()
+      console.log("✅ Trade logs:\n");
     });
   } catch (err) {
     console.error('❌ Failed to start tunnel:', err);
