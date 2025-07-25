@@ -28,7 +28,6 @@ app.use('/api', tradeRoutes);
       const exitUrl = `${url}/api/exit?accountId=${process.env.DEFAULT_ACCOUNTID}&contractId=${process.env.DEFAULT_CONTRACTID} (Exit)\n`
       console.log(`✅ Ready to receive TradingView webhooks at:\n • ${buyUrl} • ${sellUrl} • ${exitUrl}`);
       await printAccounts()
-      console.log("✅ Trade logs:\n");
     });
   } catch (err) {
     console.error('❌ Failed to start tunnel:', err);
