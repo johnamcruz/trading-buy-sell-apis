@@ -1,15 +1,39 @@
-# 📦 Trading Buy/Sell APIs – Installation & Running Guide
+# 🚀 AutoTrade Connector  
+**Turn Your TradingView Alerts into Live Trades on TopstepX — Running Safely on Your Own Machine**
 
-This project provides simple trading-related buy/sell API endpoints for ProjectX APIs using Node.js and Express. It is designed to be wired up as **webhooks for TradingView and TrendSpider alerts**. Follow the steps below to install dependencies, configure the project, and run the server locally.
+---
 
-## ✅ Prerequisites
+## 🎯 What It Is  
+AutoTrade Connector is a simple webhook service that links your **TradingView alerts** directly to **TopstepX** for automatic trade execution — and it runs **locally on your computer**.
 
-Make sure you have the following installed on your machine:
+You stay in full control. No cloud servers, no third-party hosting.
 
-* **Node.js** (v14 or later recommended)
-  👉 Download from: [https://nodejs.org/](https://nodejs.org/)
-* **npm** (comes with Node.js)
-* (Optional but helpful) **Postman or cURL** to test API endpoints
+---
+
+## 🔧 How It Works
+1. **Download and run the connector** locally (lightweight nodeJS app).
+2. **Set up an alert** in TradingView using your custom webhook URL.
+3. **Your alert fires** (e.g. MACD crossover, breakout, etc.).
+4. **The local bot receives it**, processes it, and sends the trade to **TopstepX**.
+5. ✅ Your trade is placed — automatically and securely from your machine.
+
+---
+
+## ✅ Why Use It?
+- **Runs 100% on your computer** (you own the execution)
+- **No coding or cloud setup required**
+- **Fast, reliable trade execution**
+- **Works with ANY TradingView indicator**
+- **Private and secure** — no one sees your strategy or signals but you
+
+---
+
+## 🛠️ What You Need to Use It
+- A TradingView account with alert capabilities
+- A ProjectX API key from: [https://dashboard.projectx.com](https://dashboard.projectx.com)
+- A TopstepX account (or paper trading account)
+- A computer (Windows, Mac, or Linux) to run the connector
+- A strategy or indicator that gives clear buy/sell alerts
 
 ---
 
@@ -92,15 +116,6 @@ You can test the following routes after starting the server:
 ```bash
 curl -X POST http://localhost:3000/api/enter
 ```
-
----
-
-## 📬 Notes
-
-* This is a **basic in-memory API** — data is lost when the server restarts.
-* Great for learning or testing small trading logic flows.
-* No external database or persistent storage is used.
-* **Designed to receive alerts as JSON webhooks from TradingView and TrendSpider.**
 
 ---
 
